@@ -1,0 +1,247 @@
+
+package montoescritocami;
+
+import java.util.Scanner;
+
+
+public class Número {
+    
+    // Creo string con el nombre nletra y un parametro entero(int) llamado numero
+    public static String nletra(int numero)
+            
+    {
+      // Luego declaro string llamado cadena para que todo sea guardado ahi.
+        String cadena = new String ();
+        
+        //Identifico si lleva millones
+        //el parametro numero lo divido por 1000000 y si es >0 entra al siguiente if
+        if ((numero/1000000)>0)
+        {
+            //Si numero dividido 1000000 es igual a 1, se le da a la variable cadeda " un millon "
+            if ((numero/1000000) ==1)
+            {
+                // se le pone +nletra es por se llama el metodo string nletra, en donde vuelvo a decir que numero
+                //por el modulo de 1000000, para que le reste un numero.
+                //osea cada numero que se ingresa se le resta un numero
+                cadena = " Un Millon "+nletra (numero%1000000);
+            }
+            
+            else 
+            {
+                
+                //toma el numero que tiene y toma el decimal, luego concatena con millones se invoca de nuevo nltra y numero modulo 1000000
+                // va comprando si es miles 
+                cadena = nletra (numero/1000000)+ "Millones"+nletra (numero%1000000);
+            }
+        }
+        
+        else
+        {
+            //Identifico si lleva miles
+            
+            if ((numero/1000)>0)
+            {
+                if ((numero/1000)==1)
+                {
+                    cadena = " Mil "+nletra (numero%1000); 
+                }
+                
+                else
+                {
+                    cadena = nletra (numero/1000)+ " Mil "+ nletra(numero%1000);
+                }
+            }
+        
+        else
+            {
+                //Identidico si lleva cientos
+                
+                if ((numero/100)>0)
+                {
+                    if ((numero/100)==1)
+                    {
+                        if ((numero%100)==0)
+                        {
+                            cadena = " Cien ";
+                        }
+                        
+                        else 
+                        {
+                            cadena = " Ciento "+ nletra(numero%100);
+                        }
+                    }
+                    
+                    else
+                    {
+                        if ((numero/100)==5)
+                        {
+                            cadena = " Quinientos "+ nletra (numero%100);
+                        }
+                        
+                        else
+                        {
+                            if  ((numero/100)==9)
+                            {
+                                cadena = " Novecientos "+ nletra (numero%100);
+                            }
+                            
+                            else 
+                            {
+                                cadena = nletra (numero/100)+" Cientos "+nletra(numero%100);
+                            }
+                        }
+                    }                           
+                }
+                
+                //Identifico las decenas
+                else 
+                {
+                    if ((numero/10)>0)
+                    {
+                        //este primer switch que tiene (int) para quitar decimales y poner numero entero
+                        switch ((int)(numero/10))
+                        {
+                            case 1: 
+                                
+                                // si el modulo del numero que ingrese es igual a 0 osea es igual a "diez"
+                                  switch ((int)(numero%10))
+                                    {
+                                      case 0: cadena = " Diez "; break;
+                                      case 1: cadena = " Once "; break;
+                                      case 2: cadena = " Doce "; break;
+                                      case 3: cadena = " Trece "; break;
+                                      case 4: cadena = " Catorce "; break;
+                                      case 5: cadena = " Quince "; break;
+                                      // se coloca por default por si no cumple ninguna de las anteriores 
+                                      default:
+                                          cadena = " Diez y "+ nletra(numero%10); break;
+                                                                         
+                                    }
+                                  break;
+                                  
+                            case 2: 
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Veinte "; break;
+                                      default:
+                                          cadena = " Veinti "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                             
+                            case 3:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Treinta "; break;
+                                      default:
+                                          cadena = " Treinta y " + nletra (numero%10); break; 
+                                  }
+                                  break;
+                                
+                            case 4:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Cuarenta "; break;
+                                      default:
+                                          cadena = " Cuarenta y "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                                  
+                            case 5:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Cincuenta "; break;
+                                      default:
+                                          cadena = " Cincuenta y "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                                  
+                            case 6:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Sesenta "; break;
+                                      default:
+                                             cadena = " Sesenta y "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                                  
+                            case 7: 
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Setenta "; break;
+                                      default:
+                                             cadena = " Setenta y "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                            
+                            case 8:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Ochenta "; break;
+                                      default:
+                                             cadena = " ochenta y "+ nletra (numero%10); break;
+                                  }
+                                  break;
+                            
+                            case 9:
+                                  switch ((int)(numero%10))
+                                  {
+                                      case 0: cadena = " Noventa "; break;
+                                      default:
+                                             cadena = " Noventa y "+ nletra (numero%10); break;
+                                          
+                                  }
+                                  break;
+                             }
+                        } 
+                    
+                    else 
+                    {
+                        switch ((int)(numero))
+                        {
+                            case 0: cadena = " Cero "; break;
+                            case 1: cadena = " Uno "; break;
+                            case 2: cadena = " Dos "; break;
+                            case 3: cadena = " Tres "; break;
+                            case 4: cadena = " Cuatro "; break;
+                            case 5: cadena = " Cinco "; break; 
+                            case 6: cadena = " Seis "; break;
+                            case 7: cadena = " Siete "; break;
+                            case 8: cadena = " Ocho "; break;
+                            case 9: cadena = " Nueve "; break;
+                        }
+                    }
+                }
+            }
+        }
+        
+        // retorna toda la cadena que he guardado
+        return cadena;
+    }
+    
+    
+
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+public static void main (String [] args)
+        
+{
+ int recibo;
+ Scanner f = new Scanner(System.in);
+ System.out.print( "Digite numero:");
+ recibo = f.nextInt();
+ System.out.print(nletra(recibo));
+ 
+ 
+         
+    
+    
+}
+}
